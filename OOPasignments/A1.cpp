@@ -10,17 +10,33 @@ public:
         realp = 0;
         imagp = 0;
     }
-    complex operator+(complex &); // for addition of two complex nos
-    complex operator*(complex &); // for multiplication of two complex nos
-    complex(float, float);        // parameterized constructor
+
+    complex(float x, float y)
+    {
+        realp = x;
+        imagp = y;
+    }
+
+    complex operator+(complex a)
+    { // for addition of two complex nos
+        complex temp;
+        temp.realp = imagp + a.realp;
+        temp.imagp = imagp + a.imagp;
+        return temp;
+    }
+
+    complex operator*(complex a)
+    { // for multiplication of two complex nos
+        complex temp;
+        temp.realp = imagp * a.realp;
+        temp.imagp = imagp * a.imagp;
+        return temp;
+    }
+
     friend istream &operator>>(istream &, complex &);
     friend ostream &operator<<(ostream &, complex &);
 };
-complex::complex(float x, float y) // parameterized constructor definition
-{
-    realp = x;
-    imagp = y;
-}
+
 // function to accept values of real and imag parts of complex no
 istream &operator>>(istream &din, complex &c)
 {
@@ -30,6 +46,7 @@ istream &operator>>(istream &din, complex &c)
     din >> c.imagp;
     return din;
 }
+
 // functions to display complex nos
 ostream &operator<<(ostream &dout, complex &c)
 {
@@ -38,21 +55,9 @@ ostream &operator<<(ostream &dout, complex &c)
     return dout;
 }
 // function to add two complex nos
-complex complex::operator+(complex &c)
-{
-    complex temp;
-    temp.realp = realp + c.realp;
-    temp.imagp = imagp + c.imagp;
-    return temp;
-}
+
 // function to multiply two complex nos
-complex complex::operator*(complex &c)
-{
-    complex mul;
-    mul.realp = (realp * c.realp) - (imagp * c.imagp);
-    mul.imagp = (imagp * c.realp) + (realp * c.imagp);
-    return mul;
-}
+
 int main()
 {
     complex c2, c3;
@@ -72,6 +77,63 @@ int main()
     cout << "\nMultiplication of two complex number is: ";
     c3 = c1 * c2;
     cout << c3; // display value of c3
-    cout<<"\n";
+    cout << "\n";
     return 0;
 }
+
+// #include<iostream>
+// using namespace std;
+
+// class Complex{
+//     public:
+//     int real, imag;
+
+//     Complex(){
+//         real = 0;
+//         imag = 0;
+//     }
+
+//     complex(int a, int b){
+//         real = a;
+//         imag = b;
+//     }
+
+//     // + operator overloading
+//     Complex operator+ (Complex c){
+//         Complex temp;
+//         temp.real = real+c.real;
+//         temp.imag = imag+c.imag;
+//         return temp;
+//     }
+
+//     // * operator overloading
+//     Complex operator* (Complex c){
+//         Complex temp;
+//         temp.real = real * c.real;
+//         temp.imag = imag * c.imag;
+//         return temp;
+//     }
+
+//     // for display
+//     void display(){
+//         cout<<real<<" + "<<imag<<"i"<<endl;
+//     }
+
+// };
+
+// int main(){
+
+//     Complex c1, c2, sum, mult;
+//     c1.complex(1, 4);
+//     c2.complex(2, 5);
+
+//     // for sum
+//     sum = c1+c2;
+//     sum.display();
+
+//     // for multiplication
+//     mult = c1 * c2;
+//     mult.display();
+
+//     return 0;
+// }
