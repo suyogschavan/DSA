@@ -22,7 +22,7 @@ public:
     db() // default constructor
     {
         roll = 76;
-        strcpy(name, "TestName");
+        strcpy(name, "Suyog");
         strcpy(Class, "DSE");
         strcpy(Div, "B");
         strcpy(dob, "18/11/2003");
@@ -58,6 +58,7 @@ void display(db d) // defination of friend function
     cout << "\n Phone_No:" << d.phone;
     cout << " \n Liacense_No:" << d.license;
 }
+
 int db::stdno; // Define static data member stdno outside the class;
 
 int main()
