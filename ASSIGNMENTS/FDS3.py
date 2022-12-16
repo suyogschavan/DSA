@@ -5,7 +5,7 @@ x = numpy.array([[5, 7], [3, 3]])
 y = numpy.array([[4, 4], [10, 4]])
 
 # using add() to add matrices
-print("The element wise addition of matrix is : ")
+print("\nThe element wise addition of matrix is : ")
 print(numpy.add(x, y))
 
 # using subtract() to subtract matrices
