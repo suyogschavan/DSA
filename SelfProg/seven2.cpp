@@ -88,8 +88,10 @@ class ssl{
         }
         else if(head!=NULL){
             if(head->prn==prn){
+                Node *n = head;
                 head = head->next;
-                cout<<"Node unlinked with PRN no: "<<prn<<endl;
+                free(n);
+                cout<<"Node unlinked and DELETED with PRN no: "<<prn<<endl;
             }
             else{
                 Node* temp=NULL;
@@ -108,7 +110,9 @@ class ssl{
                 if (temp!=NULL)
                 {
                     prevptr->next=temp->next;
+                    free(temp);
                     cout<<"Node Deleted..."<<endl;
+                    
                 }
                 else
                 {
@@ -201,7 +205,12 @@ int main(){
         case 4:s.display();
             break;
         case 5:s.count();
-        
+            break;
+        case 6:
+        {   cout<<"Enter the PRN no you wan't to delete: ";
+            cin>>p;
+            // node->prn=p;
+            s.deletebyPRN(p);}
         default:
             break;
         }
