@@ -2,7 +2,7 @@
 #define MAX 10
 using namespace std;
 struct queue
-{       int data[MAX];
+{   int data[MAX];
 	int front,rear;
 };
 class Queue
