@@ -11,7 +11,7 @@ public:
     publication()
     {
         title = " ";
-        price = 0.0;
+        price = 0;
     }
     publication(string t, float p)
     {
@@ -21,9 +21,9 @@ public:
 };
 class book : public publication
 {
+public:
     int pagecount;
 
-public:
     book()
     {
         pagecount = 0;
@@ -37,10 +37,8 @@ public:
 
     void display()
     {
-
         cout << "title :" << title << endl;
         cout << "Price: " << price << endl;
-
         cout << "Pagecount :" << pagecount << endl;
     }
 };
@@ -57,7 +55,6 @@ public:
     // After : base class constructor is called
     CD(string t, float p, float tim) : publication(t, p)
     {
-
         time = tim;
     }
 
@@ -65,7 +62,6 @@ public:
     {
         cout << "title :" << title << endl;
         cout << "Price: " << price << endl;
-
         cout << "time in minutes :" << time << endl;
     }
 };
@@ -73,8 +69,23 @@ int main()
 {
     cout << endl
          << "Book data" << endl;
+try
+{   
     book b("48 Laws of Power", 5000, 500);
+    if(b.pagecount == 0){
+        throw b.pagecount;
+    }
     b.display();
+}
+catch(int b.pagecount)
+{
+    cout<<"Page count can't be zero..."<<endl;
+    cout<<"replacing all data member values to zero."<<endl;
+    publication p();
+    book b();
+    tape
+}
+
     cout << endl
          << "CD Data" << endl;
     CD c("Rich Dad Poor Dad", 500, 120.5);
