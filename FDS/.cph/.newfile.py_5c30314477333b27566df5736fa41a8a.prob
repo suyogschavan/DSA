@@ -1,0 +1,1 @@
+{"name":"Local: newfile","url":"c:\\Users\\Suyog_Asus\\RUNNING\\DSA\\newfile.py","tests":[{"id":1674053581032,"input":"3\n12 15\n5 50\n9 11","output":"9\n0\n8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Suyog_Asus\\RUNNING\\DSA\\newfile.py","group":"local","local":true}

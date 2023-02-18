@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
 class test
@@ -10,7 +11,7 @@ public:
 };
 void test::writedata()
 {
-  fstream fp;
+  ofstream fp;
   char ch;
   fp.open("file.txt", ios::out);
   cin >> ch;
@@ -23,7 +24,7 @@ void test::writedata()
 }
 void test::readdata()
 {
-  fstream fp;
+  ifstream fp;
   char ch;
   fp.open("file.txt", ios::in);
   ch = fp.get();

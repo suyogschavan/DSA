@@ -1,5 +1,3 @@
-
-
 /*
 5. B) Write a c++ program inscribed and
 circumscribed circles in triangle
