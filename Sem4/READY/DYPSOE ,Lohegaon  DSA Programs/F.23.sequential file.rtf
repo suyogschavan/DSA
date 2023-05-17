@@ -1,0 +1,255 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Courier New;}{\f1\fnil Courier New;}}
+{\colortbl ;\red0\green0\blue0;\red0\green200\blue125;}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\f0\fs22\lang16393 //============================================================================\par
+// Name        : class.cpp\par
+// Author      : \par
+// Version     :\par
+// Copyright   : Your copyright notice\par
+// Description : Hello World in C++, Ansi-style\par
+//============================================================================\par
+\par
+#include <iostream>\par
+#include<fstream>\par
+#include<string.h>\par
+using namespace std;\par
+\par
+class directory\par
+\{\par
+\par
+public:\par
+\tab char name[20];\par
+\tab int t_no;\par
+\tab void getdata()\par
+\tab\{\par
+\tab\tab cout<<"Enter the name"<<endl;\par
+\tab\tab cin>>name;\par
+\tab\tab cout<<"Enter the telephone no"<<endl;\par
+\tab\tab cin>>t_no;\par
+\par
+\tab\}\par
+\par
+\tab void putdata()\par
+\tab\{\par
+\tab\tab cout<<name<<"\\t"<<t_no<<endl;\par
+\tab\}\par
+\};\par
+\par
+int main()\par
+\{\par
+\tab directory d[10];\par
+\tab fstream f;\par
+\tab int c=0,op,i,flag,no;\par
+\tab char ch1;\par
+\tab char n[10];\par
+\tab f.open("dir.txt",ios::in|ios::out|ios::app);\par
+\tab do\par
+\tab\tab\{\par
+\tab\tab flag=0;\par
+\tab\tab\tab cout<<"#####MENU#######"<<endl;\par
+\tab\tab\tab cout<<"1:Add a record \\n2:Display\\n3:Search by name\\n4:Search by no\\n5:Modify the record"<<endl;\par
+\tab\tab\tab cout<<"Enter proper choice"<<endl;\par
+\tab\tab\tab cin>>op;\par
+\tab\tab\tab switch(op)\par
+\tab\tab\tab\{\par
+\tab\tab\tab case 1:\par
+\tab\tab\tab\tab f.seekp(0,ios::end);\par
+\tab\tab\tab\tab d[c].getdata();\par
+\tab\tab\tab\tab f.write((char*)&d[c],sizeof(d[c]));\par
+\tab\tab\tab\tab c++;\par
+\tab\tab\tab\tab break;\par
+\par
+\tab\tab\tab case 2:\par
+\tab\tab\tab\tab f.seekg(0,ios::beg);\par
+\tab\tab\tab\tab i=0;\par
+\tab\tab\tab\tab while(i<c)\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab f.read((char*)&d[i],sizeof(d[i]));\par
+\tab\tab\tab\tab\tab d[i].putdata();\par
+\tab\tab\tab\tab\tab i++;\par
+\par
+\tab\tab\tab\tab\}\par
+\par
+\tab\tab\tab\tab break;\par
+\par
+\tab\tab\tab case 3:\par
+\par
+\par
+\tab\tab\tab\tab cout<<"Enter the name"<<endl;\par
+\tab\tab\tab\tab cin>>n;\par
+\tab\tab\tab\tab f.seekg(0,ios::beg);\par
+\tab\tab\tab\tab i=0;\par
+\tab\tab\tab\tab while(i<c)\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab f.read((char*)&d[i],sizeof(d[i]));\par
+\tab\tab\tab\tab\tab if(!(strcmp(n,d[i].name)))\par
+\tab\tab\tab\tab\tab\{flag=1;\par
+\tab\tab\tab\tab\tab break;\}\par
+\tab\tab\tab\tab\tab i++;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab if(flag==1)\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab d[i].putdata();\par
+\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab else\par
+\tab\tab\tab\tab\tab cout<<"Not found"<<endl;\par
+\tab\tab\tab\tab break;\par
+\par
+\par
+\tab\tab\tab case 4:\par
+\par
+\par
+\tab\tab\tab\tab cout<<"Enter the telephone no"<<endl;\par
+\tab\tab\tab\tab cin>>no;\par
+\tab\tab\tab\tab f.seekg(0,ios::beg);\par
+\tab\tab\tab\tab i=0;\par
+\tab\tab\tab\tab while(i<c)\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab f.read((char*)&d[i],sizeof(d[i]));\par
+\tab\tab\tab\tab\tab if(no==d[i].t_no)\par
+\tab\tab\tab\tab\tab\{flag=1;\par
+\tab\tab\tab\tab\tab break;\}\par
+\tab\tab\tab\tab\tab i++;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab if(flag==1)\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab d[i].putdata();\par
+\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab else\par
+\tab\tab\tab\tab\tab cout<<"Not found"<<endl;\par
+\tab\tab\tab\tab break;\par
+\par
+\tab\tab\tab /*case 5:\par
+\tab\tab\tab\tab cout<<"Enter the name"<<endl;\par
+\tab\tab\tab\tab cin>>n;\par
+\tab\tab\tab\tab f.seekg(0,ios::beg);\par
+\tab\tab\tab\tab  for(i=0;i<c;i++)\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab        \{\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab     \tab    f.read((char*)&d[i],sizeof(d[i]));\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab     \tab    if(!strcmp(n,d[i].name))\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab     \tab    \{\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab     \tab\tab    flag=1;\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab     \tab\tab    break;\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab     \tab    \}\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab        \}\par
+\tab\tab\tab\tab if(flag==1)\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab d[i].getdata();\par
+\tab\tab\tab\tab\tab f.seekp(-1*sizeof(d[i]),ios::cur);\par
+\tab\tab\tab\tab\tab f.write((char*)&d[i],sizeof(d[i]));\par
+\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab else\par
+\tab\tab\tab\tab\tab cout<<"NOT found"<<endl;\par
+\tab\tab\tab\tab break;*/\par
+\tab\tab\tab case 5:\par
+\tab\tab\tab\tab\tab\tab\tab char s[20];\par
+\tab\tab\tab\tab\tab\tab\tab cout<<"Enter name whose number you want to modify:"<<endl;\par
+\tab\tab\tab\tab\tab\tab\tab\tab        cin>>s;\par
+\tab\tab\tab\tab\tab\tab\tab\tab        f.seekg(0,ios::beg);\par
+\tab\tab\tab\tab\tab\tab\tab\tab        for(i=0;i<c;i++)\par
+\tab\tab\tab\tab\tab\tab\tab\tab        \{\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab    f.read((char*)&d[i],sizeof(d[i]));\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab    if(!strcmp(s,d[i].name))\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab    \{\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab\tab    flag=1;\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab\tab    break;\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab    \}\par
+\tab\tab\tab\tab\tab\tab\tab\tab        \}\par
+\tab\tab\tab\tab\tab\tab\tab\tab        if(flag==1)\par
+\tab\tab\tab\tab\tab\tab\tab\tab        \{\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab    d[i].getdata();\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab    f.seekp(-1*sizeof(d[i]),ios::cur);\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab    f.write((char*)&d[i],sizeof(d[i]));\par
+\tab\tab\tab\tab\tab\tab\tab\tab        \}\par
+\tab\tab\tab\tab\tab\tab\tab\tab        else\par
+\tab\tab\tab\tab\tab\tab\tab\tab     \tab    cout<<"Record not found!!"<<endl;\par
+\tab\tab\tab\tab\tab\tab\tab\tab        break;\par
+\par
+\par
+\par
+\tab\tab\tab\}\par
+\par
+\tab\tab\tab cout<<"Do u want to cont?\\n";\par
+\tab\tab\tab cin>>ch1;\par
+\par
+\}while(ch1=='Y'||ch1=='y');\par
+\}\par
+\par
+\par
+\par
+/*OUTPUT:=\par
+\par
+
+\pard\cf1\f1\fs20 #####MENU#######\cf0\par
+\cf1 1:Add a record \cf0\par
+\cf1 2:Display\cf0\par
+\cf1 3:Search by name\cf0\par
+\cf1 4:Search by no\cf0\par
+\cf1 5:Modify the record\cf0\par
+\cf1 Enter proper choice\cf0\par
+\cf2 1\cf0\par
+\cf1 Enter the name\cf0\par
+\cf2 tris\cf0\par
+\cf1 Enter the telephone no\cf0\par
+\cf2 241798\cf0\par
+\cf1 Do u want to cont?\cf0\par
+\cf2 y\cf0\par
+\cf1 #####MENU#######\cf0\par
+\cf1 1:Add a record \cf0\par
+\cf1 2:Display\cf0\par
+\cf1 3:Search by name\cf0\par
+\cf1 4:Search by no\cf0\par
+\cf1 5:Modify the record\cf0\par
+\cf1 Enter proper choice\cf0\par
+\cf2 1\cf0\par
+\cf1 Enter the name\cf0\par
+\cf2 rose\cf0\par
+\cf1 Enter the telephone no\cf0\par
+\cf2 241888\cf0\par
+\cf1 Do u want to cont?\cf0\par
+\cf2 y\cf0\par
+\cf1 #####MENU#######\cf0\par
+\cf1 1:Add a record \cf0\par
+\cf1 2:Display\cf0\par
+\cf1 3:Search by name\cf0\par
+\cf1 4:Search by no\cf0\par
+\cf1 5:Modify the record\cf0\par
+\cf1 Enter proper choice\cf0\par
+\cf2 2\cf0\par
+\cf1 tris\tab 241798\cf0\par
+\cf1 rose\tab 241888\cf0\par
+\cf1 Do u want to cont?\cf0\par
+\cf2 y\cf0\par
+\cf1 #####MENU#######\cf0\par
+\cf1 1:Add a record \cf0\par
+\cf1 2:Display\cf0\par
+\cf1 3:Search by name\cf0\par
+\cf1 4:Search by no\cf0\par
+\cf1 5:Modify the record\cf0\par
+\cf1 Enter proper choice\cf0\par
+\cf2 3\cf0\par
+\cf1 Enter the name\cf0\par
+\cf2 tris\cf0\par
+\cf1 tris\tab 241798\cf0\par
+\cf1 Do u want to cont?\cf0\par
+\cf2 y\cf0\par
+\cf1 #####MENU#######\cf0\par
+\cf1 1:Add a record \cf0\par
+\cf1 2:Display\cf0\par
+\cf1 3:Search by name\cf0\par
+\cf1 4:Search by no\cf0\par
+\cf1 5:Modify the record\cf0\par
+\cf1 Enter proper choice\cf0\par
+\cf2 4\cf0\par
+\cf1 Enter the telephone no\cf0\par
+\cf2 241888\cf0\par
+\cf1 rose\tab 241888\cf0\par
+\cf1 Do u want to cont?\cf0\par
+\cf2 n\cf0\par
+
+\pard\f0\fs22 */\par
+}
+ 

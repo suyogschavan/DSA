@@ -1,0 +1,83 @@
+Program :
+
+#include <iostream>
+#include<queue>
+using namespace std;
+
+int main()
+{
+	queue<int> q1;
+     cout << " =====  Program to demonstrate the BFS Traversal on a Graph, in CPP  ===== \n\n";
+
+    //variable declaration
+    int cost[10][10], i, j, k, v, e, n, visited[10]={0};
+
+    cout << "Enter the number of vertices in the Graph: ";
+    cin >> v;
+    cout << "\nEnter the number of edges in the Graph : ";
+    cin >> e;
+    
+   //---------------------------------------- 
+for(i=0;i<v;i++)
+{
+	for(j=0;j<v;j++)
+	{
+		cost[i][j]=0;
+	}
+	 
+}
+
+//------------------------------------------------------
+cout << "\nEnter the start and end vertex of the edges: \n";
+    for (k = 1; k <= e; k++)
+    {
+        cin >> i >> j;
+        cost[i][j] = 1;
+    }
+
+for(i=0;i<v;i++)
+{
+	for(j=0;j<v;j++)
+	{
+		cout<<cost[i][j]<<" ";
+	}
+	cout<<"\n";
+}
+
+//----------------------------------------
+cout<<"\n\n The Visited Array : \n ";
+for(i=0;i<v;i++)
+cout<<visited[i]<<" ";
+//----------------------------------------------------------------------------------------
+    cout << "\nEnter the initial vertex to start the BFS traversal with: ";
+    cin >> n;
+    cout << "\nThe BFS traversal on the given graph is : \n";
+  
+
+    //As we start with the vertex n, marking it visited to avoid visiting again
+    visited[n] = 1;
+	q1.push(n);
+
+    //The BFS Traversal Logic
+    while (!q1.empty())
+    {
+           	n=q1.front();
+        	cout<<n <<" ";
+            q1.pop();
+            
+		     for(j=0;j<v;j++)
+        		{
+        	
+           			 if (cost[n][j] != 0 && visited[j] != 1 )
+            			{
+			
+			                visited[j] = 1;
+			                //put all the vertices that are connected to the visited vertex into a Queue
+			               q1.push(j);
+			             }
+
+				}
+	}	
+	
+     return 0;
+}

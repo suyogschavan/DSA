@@ -1,0 +1,71 @@
+package P1;
+
+	import java.util.Scanner;
+	import java.util.*;
+
+	public class Shell_Sort 
+	{
+		public   int a[]= new int[5];
+		
+		public  int n;
+		
+		Scanner in = new Scanner(System.in);
+		
+		public void Accept()
+		{
+			System.out.println("Enter No: of Elements: ");
+			n = in.nextInt();
+			
+			for(int i=0;i<n;i++)
+			{
+				a[i] = in.nextInt();
+			}
+				
+		}
+		public void Display()
+		{
+			for(int i=0;i<n;i++)
+			{
+				System.out.println(a[i] + " ");
+			}
+		}
+		
+		void Shell()
+		{
+			int temp,j;
+			for(int step = n/2;step>0;step=step/2)
+			{
+				for(int i=step;i<n;i++)
+				{
+					temp = a[i];
+					for( j=i;j>=step;j=j-step)
+					{
+						if(temp<a[j-step])
+							a[j] = a[j-step];
+						else
+							break;
+					}
+					
+					a[j] = temp;
+				}
+			}
+			
+		}
+		
+		public static void main(String[] args)
+		{
+			Shell_Sort S = new Shell_Sort();
+			
+			S.Accept();
+			System.out.println("\t No. Before Sort \n\n ");
+			S.Display();
+			S.Shell();
+			System.out.println("\t No. After Sort \n\n ");
+			S.Display();
+			
+			
+			
+		}
+		
+	}
+

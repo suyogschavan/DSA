@@ -1,0 +1,1 @@
+{"name":"Local: SubArray","url":"c:\\Users\\Suyog_Asus\\RUNNING\\DSA\\session\\05\\03\\23\\SubArray.cpp","tests":[{"id":1678015085931,"input":"5 12\n1 2 3 7 5","output":"2 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Suyog_Asus\\RUNNING\\DSA\\session\\05\\03\\23\\SubArray.cpp","group":"local","local":true}
