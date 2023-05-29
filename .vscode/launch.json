@@ -2,6 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "interpack",
+            "request": "launch",
+            "mainClass": "interpack"
+        },
+        {
+            "type": "java",
+            "name": "interpack",
+            "request": "launch",
+            "mainClass": "sum.interpack"
+        },
+        {
             "name": "C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
             "request": "launch",
@@ -18,7 +30,6 @@
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
-                    
                 }
             ]
         },
