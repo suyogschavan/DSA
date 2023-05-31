@@ -1,12 +1,12 @@
 #include<iostream>
-#include<unordered_map>
+#include<map>
 #include<list>
 #include<queue>
 using namespace std;
 
 class Graph{
-	unordered_map<int, list<int>> adj_list;
-	unordered_map<int, bool> visited;
+	map<int, list<int>> adj_list;
+	map<int, bool> visited;
 	queue<int> q;
 
 	public:
